@@ -1,0 +1,152 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo8xg3fvjige1"]
+
+[ext_resource type="Script" path="res://InterfaceManager.gd" id="1_st65m"]
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(1160.5, 179)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_st65m")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = -67.0
+offset_right = 988.0
+offset_bottom = 94.0
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Control"]
+position = Vector2(-44, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Area2D"]
+position = Vector2(618.75, 12.5)
+shape = SubResource("4")
+
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 185.0
+offset_bottom = 92.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = -72.0
+offset_right = 442.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Wood" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Wood:"
+
+[node name="WoodValue" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer/Wood"]
+layout_mode = 0
+offset_left = 56.0
+offset_right = 134.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 25
+text = "100"
+
+[node name="Stone" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Stone:"
+
+[node name="StoneValue" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer/Stone"]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 136.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 25
+text = "100"
+
+[node name="Food" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Food:"
+
+[node name="FoodValue" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer/Food"]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 25
+text = "100"
+
+[node name="Subs" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 2
+offset_left = 387.0
+offset_top = -72.0
+offset_right = 816.0
+offset_bottom = -9.0
+theme_override_font_sizes/font_size = 50
+text = "Subs"
+
+[node name="HealthValue" type="Label" parent="CanvasLayer/Control/Control/Subs"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -3.0
+offset_right = 212.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 50
+text = "100"
+
+[node name="post_video" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Post Video"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Version" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "v0.0.1
+"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_exited"]
