@@ -1,4 +1,4 @@
-extends Button
+extends Control
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,21 +11,9 @@ func _process(delta):
 	pass
 
 
-func _on_pressed():
-	vid_countdown()
+func _on_start_button_pressed():
+	change_scene("res://main.tscn")
 
 
-func vid_countdown():
-	self.hide()
-
-
-func _on_video_vid_posted():
-	self.show()
-
-
-func _on_control_rentdue():
-	self.hide()
-
-
-func _on_rent_rentpay():
-	self.show()
+func change_scene(target: String) -> void:
+	get_tree().change_scene_to_file(target)

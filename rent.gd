@@ -1,9 +1,10 @@
-extends Button
+extends Node2D
 
+signal rentpay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -11,21 +12,10 @@ func _process(delta):
 	pass
 
 
-func _on_pressed():
-	vid_countdown()
-
-
-func vid_countdown():
+func _on_rentpay_pressed():
 	self.hide()
-
-
-func _on_video_vid_posted():
-	self.show()
+	emit_signal("rentpay")
 
 
 func _on_control_rentdue():
-	self.hide()
-
-
-func _on_rent_rentpay():
 	self.show()
