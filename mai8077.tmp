@@ -1,0 +1,272 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo8xg3fvjige1"]
+
+[ext_resource type="Script" path="res://post_video.gd" id="1_3qxjh"]
+[ext_resource type="Script" path="res://InterfaceManager.gd" id="1_st65m"]
+[ext_resource type="Script" path="res://video.gd" id="2_6jo0x"]
+[ext_resource type="Script" path="res://Monetize_button.gd" id="3_3s4ni"]
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(1160.5, 179)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b6df8"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="post_video" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Post Video"
+flat = true
+script = ExtResource("1_3qxjh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_st65m")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = -67.0
+offset_right = 988.0
+offset_bottom = 94.0
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Control"]
+position = Vector2(-44, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Area2D"]
+position = Vector2(618.75, 12.5)
+shape = SubResource("4")
+
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 185.0
+offset_bottom = 92.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = -72.0
+offset_right = 442.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Money:"
+
+[node name="MoneyAmount" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer/Money"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 1.0
+offset_right = 172.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Subs" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 2
+offset_left = 471.0
+offset_top = 24.0
+offset_right = 900.0
+offset_bottom = 93.0
+theme_override_font_sizes/font_size = 50
+text = "Subscribers:"
+
+[node name="subvalue" type="Label" parent="CanvasLayer/Control/Control/Subs"]
+modulate = Color(0.845547, 0, 0.148096, 1)
+layout_mode = 0
+offset_left = 301.0
+offset_top = 2.0
+offset_right = 388.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 50
+text = "100"
+
+[node name="Views" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = -34.0
+offset_right = 193.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Total Views: "
+
+[node name="viewamount" type="Label" parent="CanvasLayer/Control/Control/Views"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 1.0
+offset_right = 230.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="vids" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = 7.0
+offset_right = 193.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Videos Posted: "
+
+[node name="vidamount" type="Label" parent="CanvasLayer/Control/Control/vids"]
+layout_mode = 0
+offset_left = 180.5
+offset_right = 258.5
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Monetize" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -58.0
+offset_right = 90.0
+offset_bottom = -27.0
+text = "Monetize"
+script = ExtResource("3_3s4ni")
+
+[node name="channelmon" type="Label" parent="CanvasLayer"]
+offset_left = 15.0
+offset_top = 522.0
+offset_right = 141.0
+offset_bottom = 545.0
+text = "Your Channel Is:"
+
+[node name="monetizestatus" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 544.0
+offset_right = 135.0
+offset_bottom = 567.0
+text = "Not Monetized"
+
+[node name="Version" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "v0.0.1
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="video" type="Node2D" parent="."]
+position = Vector2(23, 21)
+script = ExtResource("2_6jo0x")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="video"]
+modulate = Color(0.10748, 0.10748, 0.10748, 0.145098)
+position = Vector2(355.75, 88.75)
+scale = Vector2(712.5, 178.5)
+mesh = SubResource("BoxMesh_b6df8")
+
+[node name="title" type="Label" parent="video"]
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 180.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 20
+text = "title"
+
+[node name="views" type="Label" parent="video"]
+offset_left = 14.0
+offset_top = 77.0
+offset_right = 74.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 20
+text = "views:"
+
+[node name="revenue" type="Label" parent="video"]
+offset_left = 13.0
+offset_top = 108.0
+offset_right = 102.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 20
+text = "Revenue:"
+
+[node name="revenueamount" type="Label" parent="video/revenue"]
+modulate = Color(0, 0.772549, 0, 1)
+offset_left = 92.0
+offset_right = 181.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "0$"
+
+[node name="vidamount" type="Label" parent="video"]
+offset_left = 11.0
+offset_top = 49.0
+offset_right = 166.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 15
+text = "Video Number: "
+
+[node name="monetize" type="Label" parent="video"]
+offset_left = 14.0
+offset_top = 133.0
+offset_right = 54.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 25
+text = "$"
+
+[connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/post_video" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/Control" method="_on_post_video_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="video" method="_on_post_video_pressed"]
+[connection signal="able_to_monetize" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize" method="_on_control_able_to_monetize"]
+[connection signal="over_1000_subs" from="CanvasLayer/Control" to="video" method="_on_control_over_1000_subs"]
+[connection signal="area_entered" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="video" method="_on_monetize_pressed"]
+[connection signal="earnings" from="video" to="CanvasLayer/Control" method="_on_video_earnings"]
+[connection signal="random_sub_amount" from="video" to="CanvasLayer/Control" method="_on_video_random_sub_amount"]
+[connection signal="vid_posted" from="video" to="CanvasLayer/post_video" method="_on_video_vid_posted"]
+[connection signal="view_amount" from="video" to="CanvasLayer/Control" method="_on_video_view_amount"]
