@@ -21,3 +21,11 @@ func vid_countdown():
 
 func _on_video_vid_posted():
 	self.show()
+
+
+func _on_control_rentdue():
+	self.hide()
+
+
+func _on_rent_rentpay():
+	self.show()
