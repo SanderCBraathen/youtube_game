@@ -12,6 +12,7 @@ signal earnings
 @onready var revenue = $revenue/revenueamount
 @onready var videos = $vidamount
 @onready var monetize_sign = $monetize
+@onready var popcount = $popcount
 
 #variables
 var videos_posted = 0
@@ -31,7 +32,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	popcount.text = "Popularity: " + str(popularity)
 
 
 func _on_post_video_pressed():
@@ -118,3 +119,27 @@ func money_giving():
 	revenue.text = str(money_earnings) + " $"
 	
 	emit_signal("earnings", money_earnings)
+
+
+func _on_toyuto_buy_pressed():
+	popularity += 1
+
+
+func _on_lambo_buy_pressed():
+	popularity += 15
+
+
+func _on_apartment_rent_pressed():
+	popularity += 2
+
+
+func _on_mansion_buy_pressed():
+	popularity += 75
+
+
+func _on_lowlex_buy_pressed():
+	popularity += 2
+
+
+func _on_banana_buy_pressed():
+	popularity += 100

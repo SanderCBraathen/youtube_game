@@ -279,6 +279,14 @@ position = Vector2(355.75, 88.75)
 scale = Vector2(712.5, 178.5)
 mesh = SubResource("BoxMesh_b6df8")
 
+[node name="popcount" type="Label" parent="video"]
+offset_left = 360.0
+offset_top = 136.0
+offset_right = 548.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 25
+text = "Popularity: "
+
 [node name="title" type="Label" parent="video"]
 offset_left = 14.0
 offset_top = 6.0
@@ -522,8 +530,18 @@ text = "X"
 [connection signal="able_to_monetize" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize" method="_on_control_able_to_monetize"]
 [connection signal="money_amount" from="CanvasLayer/Control" to="shop" method="_on_control_money_amount"]
 [connection signal="over_1000_subs" from="CanvasLayer/Control" to="video" method="_on_control_over_1000_subs"]
+[connection signal="over_187_5m" from="CanvasLayer/Control" to="shop/categories/house/mansion_buy" method="_on_control_over_187_5m"]
+[connection signal="over_1_4m" from="CanvasLayer/Control" to="shop/categories/cars/lambo_buy" method="_on_control_over_1_4m"]
+[connection signal="over_2300" from="CanvasLayer/Control" to="shop/categories/cars/Toyuto_buy" method="_on_control_over_2300"]
+[connection signal="over_250m" from="CanvasLayer/Control" to="shop/categories/luxury/banana_buy" method="_on_control_over_250m"]
+[connection signal="over_25k" from="CanvasLayer/Control" to="shop/categories/luxury/lowlex_buy" method="_on_control_over_25k"]
 [connection signal="rentdue" from="CanvasLayer/Control" to="CanvasLayer/post_video" method="_on_control_rentdue"]
 [connection signal="rentdue" from="CanvasLayer/Control" to="rent" method="_on_control_rentdue"]
+[connection signal="under_187_5m" from="CanvasLayer/Control" to="shop/categories/house/mansion_buy" method="_on_control_under_187_5m"]
+[connection signal="under_1_4m" from="CanvasLayer/Control" to="shop/categories/cars/lambo_buy" method="_on_control_under_1_4m"]
+[connection signal="under_2300" from="CanvasLayer/Control" to="shop/categories/cars/Toyuto_buy" method="_on_control_under_2300"]
+[connection signal="under_250m" from="CanvasLayer/Control" to="shop/categories/luxury/banana_buy" method="_on_control_under_250m"]
+[connection signal="under_25k" from="CanvasLayer/Control" to="shop/categories/luxury/lowlex_buy" method="_on_control_under_25k"]
 [connection signal="area_entered" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control" method="_on_monetize_pressed"]
@@ -538,19 +556,24 @@ text = "X"
 [connection signal="rentpay" from="rent" to="CanvasLayer/Control" method="_on_rent_rentpay"]
 [connection signal="bought" from="shop" to="CanvasLayer/Control" method="_on_shop_bought"]
 [connection signal="mansion" from="shop" to="rent" method="_on_shop_mansion"]
-[connection signal="over_2300" from="shop" to="shop/categories/cars/Toyuto_buy" method="_on_shop_over_2300"]
 [connection signal="rent" from="shop" to="CanvasLayer/Control" method="_on_shop_rent"]
 [connection signal="rent" from="shop" to="rent" method="_on_shop_rent"]
+[connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="video" method="_on_toyuto_buy_pressed"]
 [connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="shop" method="_on_toyuto_buy_pressed"]
 [connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="shop/categories/cars/Toyuto_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/cars/lambo_buy" to="video" method="_on_lambo_buy_pressed"]
 [connection signal="pressed" from="shop/categories/cars/lambo_buy" to="shop" method="_on_lambo_buy_pressed"]
 [connection signal="pressed" from="shop/categories/cars/lambo_buy" to="shop/categories/cars/lambo_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/house/apartment_rent" to="video" method="_on_apartment_rent_pressed"]
 [connection signal="pressed" from="shop/categories/house/apartment_rent" to="shop" method="_on_apartment_rent_pressed"]
 [connection signal="pressed" from="shop/categories/house/apartment_rent" to="shop/categories/house/apartment_rent" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="video" method="_on_mansion_buy_pressed"]
 [connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop" method="_on_mansion_buy_pressed"]
 [connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop/categories/house/mansion_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="video" method="_on_lowlex_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop" method="_on_lowlex_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop/categories/luxury/lowlex_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="video" method="_on_banana_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop" method="_on_banana_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop/categories/luxury/banana_buy" method="_on_pressed"]
 [connection signal="pressed" from="shop/close" to="CanvasLayer/post_video" method="_on_close_pressed"]

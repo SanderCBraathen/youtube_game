@@ -1,5 +1,6 @@
 extends Button
 
+var bought = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +14,14 @@ func _process(delta):
 
 func _on_pressed():
 	self.hide()
+	bought = true
+
+
+func _on_control_over_187_5m():
+	if bought == false:
+		self.show()
+
+
+func _on_control_under_187_5m():
+	if bought == false:
+		self.hide()

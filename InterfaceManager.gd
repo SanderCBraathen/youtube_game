@@ -25,6 +25,18 @@ signal able_to_monetize
 signal rentdue
 signal money_amount
 
+signal over_2300
+signal over_25k
+signal over_1_4m
+signal over_187_5m
+signal over_250m
+
+signal under_2300
+signal under_25k
+signal under_1_4m
+signal under_187_5m
+signal under_250m
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monetize_status.add_theme_color_override("font_color", Color(0.788, 0, 0))
@@ -52,6 +64,28 @@ func _process(delta):
 	if subscribers >= 1000:
 		emit_signal("able_to_monetize")
 		var able_to_monetize = true
+	
+	if money >= 2300:
+		emit_signal("over_2300")
+	if money >= 25000:
+		emit_signal("over_25k")
+	if money >= 1400000:
+		emit_signal("over_1_4m")
+	if money >= 187500000:
+		emit_signal("over_187_5m")
+	if money >= 250000000:
+		emit_signal("over_250m")
+	
+	if money <= 2299:
+		emit_signal("under_2300")
+	if money <= 24999:
+		emit_signal("under_25k")
+	if money <= 1399999:
+		emit_signal("under_1_4m")
+	if money <= 187499999:
+		emit_signal("under_187_5m")
+	if money <= 249999999:
+		emit_signal("under_250m")
 
 
 func _on_post_video_pressed():
@@ -90,5 +124,5 @@ func _on_shop_bought(bought_amount):
 	money -= bought_amount
 
 
-func _on_shop_rent():
-	pass # Replace with function body.
+#func _on_shop_rent(rent_amount):
+	#rent = rent_amount

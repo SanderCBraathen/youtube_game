@@ -4,13 +4,15 @@ signal rentpay
 
 @onready var rent_amount_ui = $renttext/rentamount
 var bill_amount = 120
-var rent = 120
 var mansion_bought = false
 var elbillmin = 50
 var elbillmax = 200
+var apartment_rent = false
+var rent
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	bill_amount = 0
 	var random_generator = RandomNumberGenerator.new()
 	var electricity_bill = random_generator.randi_range(elbillmin, elbillmax)
 	bill_amount += electricity_bill
@@ -24,6 +26,12 @@ func _process(delta):
 		rent = 0
 		elbillmin = 300
 		elbillmax = 750
+	
+	if apartment_rent == false:
+		bill_amount =+ 120
+	
+	if apartment_rent == true:
+		bill_amount =+ 5000
 
 
 func _on_rentpay_pressed():
@@ -37,7 +45,7 @@ func _on_control_rentdue():
 
 
 func _on_shop_rent(rent_amount):
-	rent = rent_amount
+	apartment_rent = true
 
 
 func _on_shop_mansion():

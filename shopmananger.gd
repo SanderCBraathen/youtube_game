@@ -16,9 +16,6 @@ signal bought
 signal rent
 signal mansion
 
-signal over_2300
-signal over_
-
 #Variables
 var bought_amount
 var rent_amount
@@ -31,6 +28,7 @@ func _ready():
 	bought_amount = 0
 	
 	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,8 +36,6 @@ func _process(delta):
 	if mansion_bought == true:
 		apartment_label_ui.text = "House Bought"
 		apartment_label_ui.add_theme_color_override("font_color", Color(1,0,0))
-	if money_amount <= 2300:
-		emit_signal("over_2300")
 
 func _on_shop_pressed():
 	self.show()
@@ -93,5 +89,5 @@ func _on_banana_buy_pressed():
 	banana_label_ui.text = "Bought"
 
 
-func _on_control_money_amount(money):
-	money_amount = money
+#func _on_control_money_amount(money):
+	#money_amount = money
