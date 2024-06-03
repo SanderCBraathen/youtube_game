@@ -37,6 +37,8 @@ signal under_1_4m
 signal under_187_5m
 signal under_250m
 
+signal bankrupt
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monetize_status.add_theme_color_override("font_color", Color(0.788, 0, 0))
@@ -52,6 +54,10 @@ func _process(delta):
 	money_ui.text = str(money) + " $"
 	total_earnings.text = str(earnings) + " $"
 	payduedate.text = str(payduedate_amount)
+	
+	if money <= 0:
+		emit_signal("bankrupt")
+		change_scene("res://bankrupt.tscn")
 	
 	emit_signal("money_amount", money)
 	
@@ -123,6 +129,8 @@ func _on_rent_rentpay(bill_amount):
 func _on_shop_bought(bought_amount):
 	money -= bought_amount
 
+func change_scene(target: String) -> void:
+	get_tree().change_scene_to_file(target)
 
 #func _on_shop_rent(rent_amount):
 	#rent = rent_amount
