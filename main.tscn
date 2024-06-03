@@ -1,13 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo8xg3fvjige1"]
+[gd_scene load_steps=17 format=3 uid="uid://bo8xg3fvjige1"]
 
 [ext_resource type="Script" path="res://post_video.gd" id="1_3qxjh"]
 [ext_resource type="Script" path="res://InterfaceManager.gd" id="1_st65m"]
 [ext_resource type="Script" path="res://video.gd" id="2_6jo0x"]
+[ext_resource type="Script" path="res://Monetize_button.gd" id="3_3s4ni"]
+[ext_resource type="PackedScene" uid="uid://7q7ls0wf6cr6" path="res://rent.tscn" id="5_mbv4t"]
+[ext_resource type="Script" path="res://shopmananger.gd" id="6_5bgk2"]
+[ext_resource type="Script" path="res://Toyuto_buy.gd" id="7_e7e0o"]
+[ext_resource type="Script" path="res://lambo_buy.gd" id="8_11vfu"]
+[ext_resource type="Script" path="res://apartment_rent.gd" id="9_2xg4f"]
+[ext_resource type="Script" path="res://mansion_buy.gd" id="10_s333u"]
+[ext_resource type="Script" path="res://lowlex_buy.gd" id="11_jhqmr"]
+[ext_resource type="Script" path="res://banana_buy.gd" id="12_o1aye"]
 
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(1160.5, 179)
 
 [sub_resource type="BoxMesh" id="BoxMesh_b6df8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cabh8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ymr7p"]
+size = Vector3(300, 350, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -98,10 +112,10 @@ text = "0"
 
 [node name="Subs" type="Label" parent="CanvasLayer/Control/Control"]
 layout_mode = 2
-offset_left = 471.0
-offset_top = 24.0
-offset_right = 900.0
-offset_bottom = 93.0
+offset_left = 473.0
+offset_top = -72.0
+offset_right = 902.0
+offset_bottom = -3.0
 theme_override_font_sizes/font_size = 50
 text = "Subscribers:"
 
@@ -160,20 +174,100 @@ offset_bottom = 35.0
 theme_override_font_sizes/font_size = 25
 text = "0"
 
-[node name="Version" type="Label" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="earnings" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 44.0
+offset_right = 195.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Total Earnings: "
+
+[node name="earningamount" type="Label" parent="CanvasLayer/Control/Control/earnings"]
+layout_mode = 0
+offset_left = 188.0
+offset_right = 266.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="daycount" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 582.0
+offset_top = 50.0
+offset_right = 723.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Days Until Next Rent Due: "
+
+[node name="dayamount" type="Label" parent="CanvasLayer/Control/Control/daycount"]
+layout_mode = 0
+offset_left = 321.0
+offset_right = 399.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Monetize" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -58.0
+offset_right = 90.0
+offset_bottom = -27.0
+text = "Monetize"
+script = ExtResource("3_3s4ni")
+
+[node name="channelmon" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -29.0
+offset_right = 141.0
+offset_bottom = -6.0
+text = "Your Channel Is:"
+
+[node name="monetizestatus" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -7.0
+offset_right = 135.0
+offset_bottom = 16.0
+text = "Not Monetized"
+
+[node name="Version" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.986111
+anchor_top = 1.0
+anchor_right = 0.986111
 anchor_bottom = 1.0
 offset_left = -42.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 15
-text = "v0.1.0
+text = "v1.2.0
 "
 metadata/_edit_use_anchors_ = true
+
+[node name="shop_button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1019.0
+offset_top = -51.0
+offset_right = 1128.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 25
+text = "SHOP"
 
 [node name="video" type="Node2D" parent="."]
 position = Vector2(23, 21)
@@ -190,27 +284,274 @@ offset_left = 14.0
 offset_top = 6.0
 offset_right = 180.0
 offset_bottom = 29.0
+theme_override_font_sizes/font_size = 20
 text = "title"
 
 [node name="views" type="Label" parent="video"]
 offset_left = 14.0
-offset_top = 53.0
+offset_top = 77.0
 offset_right = 74.0
-offset_bottom = 81.0
+offset_bottom = 105.0
 theme_override_font_sizes/font_size = 20
 text = "views:"
 
 [node name="revenue" type="Label" parent="video"]
 offset_left = 13.0
-offset_top = 84.0
+offset_top = 108.0
 offset_right = 102.0
-offset_bottom = 112.0
+offset_bottom = 136.0
 theme_override_font_sizes/font_size = 20
 text = "Revenue:"
+
+[node name="revenueamount" type="Label" parent="video/revenue"]
+modulate = Color(0, 0.772549, 0, 1)
+layout_mode = 0
+offset_left = 92.0
+offset_right = 181.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "0$"
+
+[node name="vidamount" type="Label" parent="video"]
+offset_left = 11.0
+offset_top = 49.0
+offset_right = 166.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 15
+text = "Video Number: "
+
+[node name="monetize" type="Label" parent="video"]
+offset_left = 14.0
+offset_top = 133.0
+offset_right = 54.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 25
+text = "$"
+
+[node name="rent" parent="." instance=ExtResource("5_mbv4t")]
+visible = false
+position = Vector2(332, 215)
+
+[node name="shop" type="Node2D" parent="."]
+visible = false
+z_index = 1
+script = ExtResource("6_5bgk2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="shop"]
+modulate = Color(0.368627, 1, 1, 0.388235)
+position = Vector2(575.75, 200.75)
+scale = Vector2(1152.5, 402.5)
+mesh = SubResource("BoxMesh_cabh8")
+
+[node name="categories" type="Node2D" parent="shop"]
+position = Vector2(70, 30)
+
+[node name="cars" type="MeshInstance2D" parent="shop/categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(165, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="shop/categories/cars"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "CARS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toyuto_label" type="Label" parent="shop/categories/cars"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Toyuto Leak +1 pop
+Buy: 2.3k"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toyuto_buy" type="Button" parent="shop/categories/cars"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Buy Toyuto Leak"
+script = ExtResource("7_e7e0o")
+
+[node name="lambo_label" type="Label" parent="shop/categories/cars"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Damborglini Avantedor +15 pop
+Buy: 1.4M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lambo_buy" type="Button" parent="shop/categories/cars"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Damborglini Avantedor"
+script = ExtResource("8_11vfu")
+
+[node name="house" type="MeshInstance2D" parent="shop/categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(500, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="shop/categories/house"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "HOUSES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="apartment_label" type="Label" parent="shop/categories/house"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "2 Story Apartment +2 pop
+Rent: 5k A Month"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="apartment_rent" type="Button" parent="shop/categories/house"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Rent 2 Story Apartment"
+script = ExtResource("9_2xg4f")
+
+[node name="mansion_label" type="Label" parent="shop/categories/house"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Mansion +75 pop
+Buy: 187.5M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mansion_buy" type="Button" parent="shop/categories/house"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Mansion"
+script = ExtResource("10_s333u")
+
+[node name="luxury" type="MeshInstance2D" parent="shop/categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(835, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="shop/categories/luxury"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "LUXURY ITEMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lowlex_label" type="Label" parent="shop/categories/luxury"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Lowlex Titanic Watch +2 pop
+Buy: 25k"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lowlex_buy" type="Button" parent="shop/categories/luxury"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Buy Lowlex Titanic"
+script = ExtResource("11_jhqmr")
+
+[node name="banana_label" type="Label" parent="shop/categories/luxury"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Golden Banana +100 pop
+Buy: 250M
+pikk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="banana_buy" type="Button" parent="shop/categories/luxury"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Golden Banana"
+script = ExtResource("12_o1aye")
+
+[node name="close" type="Button" parent="shop"]
+offset_left = 1111.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 32.0
+text = "X"
 
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/post_video" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/Control" method="_on_post_video_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="video" method="_on_post_video_pressed"]
+[connection signal="able_to_monetize" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize" method="_on_control_able_to_monetize"]
+[connection signal="money_amount" from="CanvasLayer/Control" to="shop" method="_on_control_money_amount"]
+[connection signal="over_1000_subs" from="CanvasLayer/Control" to="video" method="_on_control_over_1000_subs"]
+[connection signal="rentdue" from="CanvasLayer/Control" to="CanvasLayer/post_video" method="_on_control_rentdue"]
+[connection signal="rentdue" from="CanvasLayer/Control" to="rent" method="_on_control_rentdue"]
 [connection signal="area_entered" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="video" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/shop_button" to="CanvasLayer/post_video" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/shop_button" to="shop" method="_on_shop_pressed"]
+[connection signal="earnings" from="video" to="CanvasLayer/Control" method="_on_video_earnings"]
+[connection signal="random_sub_amount" from="video" to="CanvasLayer/Control" method="_on_video_random_sub_amount"]
 [connection signal="vid_posted" from="video" to="CanvasLayer/post_video" method="_on_video_vid_posted"]
+[connection signal="view_amount" from="video" to="CanvasLayer/Control" method="_on_video_view_amount"]
+[connection signal="rentpay" from="rent" to="CanvasLayer/post_video" method="_on_rent_rentpay"]
+[connection signal="rentpay" from="rent" to="CanvasLayer/Control" method="_on_rent_rentpay"]
+[connection signal="bought" from="shop" to="CanvasLayer/Control" method="_on_shop_bought"]
+[connection signal="mansion" from="shop" to="rent" method="_on_shop_mansion"]
+[connection signal="over_2300" from="shop" to="shop/categories/cars/Toyuto_buy" method="_on_shop_over_2300"]
+[connection signal="rent" from="shop" to="CanvasLayer/Control" method="_on_shop_rent"]
+[connection signal="rent" from="shop" to="rent" method="_on_shop_rent"]
+[connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="shop" method="_on_toyuto_buy_pressed"]
+[connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="shop/categories/cars/Toyuto_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/cars/lambo_buy" to="shop" method="_on_lambo_buy_pressed"]
+[connection signal="pressed" from="shop/categories/cars/lambo_buy" to="shop/categories/cars/lambo_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/house/apartment_rent" to="shop" method="_on_apartment_rent_pressed"]
+[connection signal="pressed" from="shop/categories/house/apartment_rent" to="shop/categories/house/apartment_rent" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop" method="_on_mansion_buy_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop/categories/house/mansion_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop" method="_on_lowlex_buy_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop/categories/luxury/lowlex_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop" method="_on_banana_buy_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop/categories/luxury/banana_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/close" to="CanvasLayer/post_video" method="_on_close_pressed"]
+[connection signal="pressed" from="shop/close" to="shop" method="_on_close_pressed"]

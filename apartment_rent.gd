@@ -12,29 +12,4 @@ func _process(delta):
 
 
 func _on_pressed():
-	vid_countdown()
-
-
-func vid_countdown():
 	self.hide()
-
-
-func _on_video_vid_posted():
-	self.show()
-
-
-func _on_control_rentdue():
-	self.hide()
-
-
-func _on_rent_rentpay():
-	self.show()
-
-
-func _on_shop_button_pressed():
-	self.hide()
-
-
-
-func _on_close_pressed():
-	self.show()

@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Youtube Game"
-run/main_scene="res://main.tscn"
+config/name="Ytube Simulator"
+config/version="v1.1.0"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://logo.png"
+
+[display]
+
+window/size/resizable=false
 
 [rendering]
 
