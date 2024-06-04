@@ -37,4 +37,9 @@ func _on_shop_button_pressed():
 
 
 func _on_close_pressed():
+	await get_tree().create_timer(0.2).timeout
+	self.show()
+
+
+func _on_rentpay_pressed():
 	self.show()
