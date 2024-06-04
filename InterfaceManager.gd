@@ -49,8 +49,20 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	total_vids.text = str(vids)
-	total_views.text = str(views)
-	subs_ui.text = str(subscribers)
+	if views >= 1000000:
+		total_views.text = str(views / 100000) + "M"
+	elif views >= 10000:
+		total_views.text = str(views / 1000) + "K"
+	else:
+		total_views.text = str(views)
+	
+	if subscribers >= 1000000:
+		subs_ui.text = str(subscribers / 100000) + "M"
+	elif subscribers >= 10000:
+		subs_ui.text = str(subscribers / 1000) + "K"
+	else:
+		subs_ui.text = str(subscribers)
+	
 	money_ui.text = str(money) + " $"
 	total_earnings.text = str(earnings) + " $"
 	payduedate.text = str(payduedate_amount)
