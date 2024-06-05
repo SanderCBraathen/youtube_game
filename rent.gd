@@ -28,7 +28,7 @@ func _process(delta):
 		elbillmax = 750
 	
 	if apartment_rent == false:
-		bill_amount =+ 120
+		bill_amount =+ 500
 	
 	if apartment_rent == true:
 		bill_amount =+ 5000

@@ -50,7 +50,14 @@ func new_vid():
 	await get_tree().create_timer(1).timeout
 	_random_sub_amount()
 	
-	views.text = "Views: " + str(amount_views)
+	if amount_views >= 1000000000:
+		views.text = "Views: " + str(amount_views / 1000000000) + "B"
+	elif amount_views >= 1000000:
+		views.text = "Views: " + str(amount_views / 100000) + "M"
+	elif amount_views >= 10000:
+		views.text = "Views: " + str(amount_views / 1000) + "K"
+	else:
+		views.text = "Views: " + str(amount_views)
 	
 	await get_tree().create_timer(2).timeout
 	emit_signal("vid_posted")
@@ -65,8 +72,9 @@ func _random_sub_amount():
 	emit_signal("random_sub_amount", subs)
 
 func random_view_amount():
+	var popmin = popularity / 2
 	var random_generator2 = RandomNumberGenerator.new()
-	var randomnumber = random_generator2.randi_range(1, popularity)
+	var randomnumber = random_generator2.randi_range(popmin, popularity)
 	var max_view = total_subs * randomnumber
 	var min_view = videos_posted / 2
 	var random_generator = RandomNumberGenerator.new()

@@ -12,7 +12,7 @@ extends Control
 
 #Variables
 var monetized = false
-var money = 10000
+var money = 15000
 var subscribers = 0
 var views = 0
 var vids = 0
@@ -37,21 +37,43 @@ signal under_1_4m
 signal under_187_5m
 signal under_250m
 
+signal bankrupt
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monetize_status.add_theme_color_override("font_color", Color(0.788, 0, 0))
 	monetize_status.text = "Not Monetized"
 	payduedate_amount = 30
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	total_vids.text = str(vids)
-	total_views.text = str(views)
-	subs_ui.text = str(subscribers)
-	money_ui.text = str(money) + " $"
+	if views >= 1000000:
+		total_views.text = str(views / 100000) + "M"
+	elif views >= 10000:
+		total_views.text = str(views / 1000) + "K"
+	else:
+		total_views.text = str(views)
+	
+	if subscribers >= 1000000:
+		subs_ui.text = str(subscribers / 100000) + "M"
+	elif subscribers >= 10000:
+		subs_ui.text = str(subscribers / 1000) + "K"
+	else:
+		subs_ui.text = str(subscribers)
+	
+	if money >= 1000000:
+		money_ui.text = str(money / 100000) + "M" + " $"
+	elif money >= 10000:
+		money_ui.text = str(money / 1000) + "K" + " $"
+	else:
+		money_ui.text = str(money) + " $"
 	total_earnings.text = str(earnings) + " $"
 	payduedate.text = str(payduedate_amount)
+	
+	if money <= 0:
+		emit_signal("bankrupt")
+		change_scene("res://bankrupt.tscn")
 	
 	emit_signal("money_amount", money)
 	
@@ -123,6 +145,8 @@ func _on_rent_rentpay(bill_amount):
 func _on_shop_bought(bought_amount):
 	money -= bought_amount
 
+func change_scene(target: String) -> void:
+	get_tree().change_scene_to_file(target)
 
 #func _on_shop_rent(rent_amount):
 	#rent = rent_amount

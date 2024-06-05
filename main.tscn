@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo8xg3fvjige1"]
+[gd_scene load_steps=18 format=3 uid="uid://bo8xg3fvjige1"]
 
 [ext_resource type="Script" path="res://post_video.gd" id="1_3qxjh"]
 [ext_resource type="Script" path="res://InterfaceManager.gd" id="1_st65m"]
 [ext_resource type="Script" path="res://video.gd" id="2_6jo0x"]
 [ext_resource type="Script" path="res://Monetize_button.gd" id="3_3s4ni"]
-[ext_resource type="PackedScene" uid="uid://7q7ls0wf6cr6" path="res://rent.tscn" id="5_mbv4t"]
+[ext_resource type="Script" path="res://rent.gd" id="5_x2mah"]
 [ext_resource type="Script" path="res://shopmananger.gd" id="6_5bgk2"]
 [ext_resource type="Script" path="res://Toyuto_buy.gd" id="7_e7e0o"]
 [ext_resource type="Script" path="res://lambo_buy.gd" id="8_11vfu"]
@@ -17,6 +17,8 @@
 size = Vector2(1160.5, 179)
 
 [sub_resource type="BoxMesh" id="BoxMesh_b6df8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bw3eo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cabh8"]
 
@@ -256,7 +258,7 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 15
-text = "v1.2.0
+text = "v1.2.2
 "
 metadata/_edit_use_anchors_ = true
 
@@ -301,7 +303,7 @@ offset_top = 77.0
 offset_right = 74.0
 offset_bottom = 105.0
 theme_override_font_sizes/font_size = 20
-text = "views:"
+text = "Views:"
 
 [node name="revenue" type="Label" parent="video"]
 offset_left = 13.0
@@ -336,9 +338,41 @@ offset_bottom = 168.0
 theme_override_font_sizes/font_size = 25
 text = "$"
 
-[node name="rent" parent="." instance=ExtResource("5_mbv4t")]
+[node name="rent" type="Node2D" parent="."]
 visible = false
 position = Vector2(332, 215)
+script = ExtResource("5_x2mah")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="rent"]
+modulate = Color(0.788235, 0, 0.0235294, 0.27451)
+position = Vector2(267.75, 111.75)
+scale = Vector2(536.5, 224.5)
+mesh = SubResource("BoxMesh_bw3eo")
+
+[node name="rentpay" type="Button" parent="rent"]
+offset_left = 148.0
+offset_top = 172.0
+offset_right = 367.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Pay Bills"
+
+[node name="renttext" type="Label" parent="rent"]
+offset_left = 170.0
+offset_top = 51.0
+offset_right = 351.0
+offset_bottom = 74.0
+text = "You need to pay bills of"
+
+[node name="rentamount" type="Label" parent="rent/renttext"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 37.0
+offset_right = 132.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "120$"
 
 [node name="shop" type="Node2D" parent="."]
 visible = false
@@ -554,6 +588,8 @@ text = "X"
 [connection signal="view_amount" from="video" to="CanvasLayer/Control" method="_on_video_view_amount"]
 [connection signal="rentpay" from="rent" to="CanvasLayer/post_video" method="_on_rent_rentpay"]
 [connection signal="rentpay" from="rent" to="CanvasLayer/Control" method="_on_rent_rentpay"]
+[connection signal="pressed" from="rent/rentpay" to="CanvasLayer/post_video" method="_on_rentpay_pressed"]
+[connection signal="pressed" from="rent/rentpay" to="rent" method="_on_rentpay_pressed"]
 [connection signal="bought" from="shop" to="CanvasLayer/Control" method="_on_shop_bought"]
 [connection signal="mansion" from="shop" to="rent" method="_on_shop_mansion"]
 [connection signal="rent" from="shop" to="CanvasLayer/Control" method="_on_shop_rent"]
