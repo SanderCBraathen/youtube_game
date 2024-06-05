@@ -12,7 +12,7 @@ extends Control
 
 #Variables
 var monetized = false
-var money = 10000
+var money = 15000
 var subscribers = 0
 var views = 0
 var vids = 0
@@ -45,7 +45,6 @@ func _ready():
 	monetize_status.text = "Not Monetized"
 	payduedate_amount = 30
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	total_vids.text = str(vids)
@@ -63,7 +62,12 @@ func _process(delta):
 	else:
 		subs_ui.text = str(subscribers)
 	
-	money_ui.text = str(money) + " $"
+	if money >= 1000000:
+		money_ui.text = str(money / 100000) + "M" + " $"
+	elif money >= 10000:
+		money_ui.text = str(money / 1000) + "K" + " $"
+	else:
+		money_ui.text = str(money) + " $"
 	total_earnings.text = str(earnings) + " $"
 	payduedate.text = str(payduedate_amount)
 	
