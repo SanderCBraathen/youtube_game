@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c58v0lipk278l"]
+[gd_scene load_steps=3 format=3 uid="uid://bksg2iqyw3hm"]
 
 [ext_resource type="Script" path="res://intro.gd" id="1_2grss"]
-[ext_resource type="FontFile" uid="uid://cs1ewh1rly1yk" path="res://joystix monospace.otf" id="2_5olbu"]
+[ext_resource type="FontFile" path="res://joystix monospace.otf" id="2_5olbu"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,7 +22,8 @@ grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_5olbu")
 theme_override_font_sizes/font_size = 50
-text = "By IADGAMES"
+text = "By IAD GAMES 
+COMPANY"
 horizontal_alignment = 1
 vertical_alignment = 1
 

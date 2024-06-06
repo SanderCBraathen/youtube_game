@@ -41,6 +41,7 @@ func _on_rentpay_pressed():
 
 
 func _on_control_rentdue():
+	await get_tree().create_timer(2).timeout
 	self.show()
 
 
