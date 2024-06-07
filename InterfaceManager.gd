@@ -53,7 +53,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	total_vids.text = str(vids)
-	if views >= 1000000:
+	if views >= 100000:
 		total_views.text = str(views / 1000000) + "M"
 	elif views >= 10000:
 		total_views.text = str(views / 1000) + "K"
