@@ -5,6 +5,7 @@ signal vid_posted
 signal random_sub_amount
 signal view_amount
 signal earnings
+signal viral
 
 #UI
 @onready var title = $title
@@ -47,31 +48,34 @@ func new_vid():
 	random_view_amount()
 	if monetized == true:
 		money_giving()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	_random_sub_amount()
 	
 	if amount_views >= 1000000000:
-		views.text = "Views: " + str(amount_views / 1000000000) + "B"
+		views.text = str(amount_views / 1000000000) + "B"
 	elif amount_views >= 1000000:
-		views.text = "Views: " + str(amount_views / 100000) + "M"
+		views.text = str(amount_views / 100000) + "M"
 	elif amount_views >= 10000:
-		views.text = "Views: " + str(amount_views / 1000) + "K"
+		views.text = str(amount_views / 1000) + "K"
 	else:
-		views.text = "Views: " + str(amount_views)
+		views.text = str(amount_views)
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.5).timeout
 	emit_signal("vid_posted")
 
 func _random_sub_amount():
 	var subper = 10
 	if total_subs >= 1000:
-		subper = 250
+		subper = 100
 	subs = amount_views / subper
 	total_subs += subs
 	
 	emit_signal("random_sub_amount", subs)
 
 func random_view_amount():
+	var viralgen = RandomNumberGenerator.new()
+	var viralchance = viralgen.randi_range(1, 100)
+	
 	var popmin = popularity / 2
 	var random_generator2 = RandomNumberGenerator.new()
 	var randomnumber = random_generator2.randi_range(popmin, popularity)
@@ -80,6 +84,14 @@ func random_view_amount():
 	var random_generator = RandomNumberGenerator.new()
 	var vid_view = random_generator.randi_range(min_view, max_view)
 	amount_views = vid_view
+	
+	if viralchance == 1:
+		var random_generator3 = RandomNumberGenerator.new()
+		var viral_multi = random_generator3.randi_range(15, 500)
+		amount_views = vid_view * viral_multi
+		emit_signal("viral")
+	else:
+		pass
 	
 	emit_signal("view_amount", amount_views)
 

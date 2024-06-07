@@ -1,9 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bo8xg3fvjige1"]
+[gd_scene load_steps=22 format=3 uid="uid://bo8xg3fvjige1"]
 
 [ext_resource type="Script" path="res://post_video.gd" id="1_3qxjh"]
 [ext_resource type="Script" path="res://InterfaceManager.gd" id="1_st65m"]
 [ext_resource type="Script" path="res://video.gd" id="2_6jo0x"]
 [ext_resource type="Script" path="res://Monetize_button.gd" id="3_3s4ni"]
+[ext_resource type="Script" path="res://Monetize_label.gd" id="4_xsc5w"]
+[ext_resource type="Texture2D" uid="uid://rvtib1df0hol" path="res://kenney_cursor-pack/Vector/Basic/look_a.svg" id="5_dihjm"]
+[ext_resource type="Script" path="res://viral_badge.gd" id="5_sybur"]
+[ext_resource type="Texture2D" uid="uid://bqdx0cfgagr6h" path="res://kenney_cursor-pack/Vector/Basic/pointer_h.svg" id="5_up7ys"]
 [ext_resource type="Script" path="res://rent.gd" id="5_x2mah"]
 [ext_resource type="Script" path="res://shopmananger.gd" id="6_5bgk2"]
 [ext_resource type="Script" path="res://Toyuto_buy.gd" id="7_e7e0o"]
@@ -33,8 +37,10 @@ size = Vector3(300, 350, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -135.0
-offset_bottom = 43.0
+offset_left = -553.0
+offset_top = 92.0
+offset_right = -418.0
+offset_bottom = 135.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 25
 text = "Post Video"
@@ -221,6 +227,29 @@ offset_bottom = 35.0
 theme_override_font_sizes/font_size = 25
 text = "0"
 
+[node name="earning_month" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 583.0
+offset_top = 14.0
+offset_right = 660.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Earnings Last Month:"
+
+[node name="earning_month_amount" type="Label" parent="CanvasLayer/Control/Control/earning_month"]
+layout_mode = 0
+offset_left = 261.0
+offset_right = 339.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+
 [node name="Monetize" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 10.0
@@ -258,7 +287,7 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 15
-text = "v1.2.2
+text = "v1.3.0
 "
 metadata/_edit_use_anchors_ = true
 
@@ -270,6 +299,27 @@ offset_right = 1128.0
 offset_bottom = 39.0
 theme_override_font_sizes/font_size = 25
 text = "SHOP"
+
+[node name="Monetize_label" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -180.0
+offset_right = 410.0
+offset_bottom = -107.0
+theme_override_font_sizes/font_size = 25
+text = "Click this button to be monetized
+ and start earning money!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_xsc5w")
+
+[node name="arrow_monetize" type="Sprite2D" parent="CanvasLayer/Control/Monetize_label"]
+modulate = Color(1, 0, 0, 0.74902)
+position = Vector2(115, 98)
+rotation = -1.46303
+scale = Vector2(2.28125, 2.28125)
+texture = ExtResource("5_up7ys")
 
 [node name="video" type="Node2D" parent="."]
 position = Vector2(23, 21)
@@ -298,12 +348,16 @@ theme_override_font_sizes/font_size = 20
 text = "title"
 
 [node name="views" type="Label" parent="video"]
-offset_left = 14.0
+offset_left = 45.0
 offset_top = 77.0
-offset_right = 74.0
+offset_right = 105.0
 offset_bottom = 105.0
 theme_override_font_sizes/font_size = 20
-text = "Views:"
+text = "N/A"
+
+[node name="Sprite2D" type="Sprite2D" parent="video/views"]
+position = Vector2(-23, 15)
+texture = ExtResource("5_dihjm")
 
 [node name="revenue" type="Label" parent="video"]
 offset_left = 13.0
@@ -337,6 +391,19 @@ offset_right = 54.0
 offset_bottom = 168.0
 theme_override_font_sizes/font_size = 25
 text = "$"
+
+[node name="viral_badge" type="Label" parent="video"]
+offset_left = 604.0
+offset_top = 1.0
+offset_right = 709.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.899328, 0.803331, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "✦"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_sybur")
 
 [node name="rent" type="Node2D" parent="."]
 visible = false
@@ -425,6 +492,7 @@ text = "Buy Toyuto Leak"
 script = ExtResource("7_e7e0o")
 
 [node name="lambo_label" type="Label" parent="shop/categories/cars"]
+visible = false
 offset_left = -148.0
 offset_top = 93.0
 offset_right = 148.0
@@ -552,17 +620,19 @@ text = "Buy Golden Banana"
 script = ExtResource("12_o1aye")
 
 [node name="close" type="Button" parent="shop"]
-offset_left = 1111.0
-offset_top = 1.0
-offset_right = 1150.0
-offset_bottom = 32.0
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 59.0
+offset_bottom = 45.0
 text = "X"
 
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/post_video" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/Control" method="_on_post_video_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="video" method="_on_post_video_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="video/viral_badge" method="_on_post_video_pressed"]
 [connection signal="able_to_monetize" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize" method="_on_control_able_to_monetize"]
 [connection signal="money_amount" from="CanvasLayer/Control" to="shop" method="_on_control_money_amount"]
+[connection signal="over_1000_subs" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize_label" method="_on_control_over_1000_subs"]
 [connection signal="over_1000_subs" from="CanvasLayer/Control" to="video" method="_on_control_over_1000_subs"]
 [connection signal="over_187_5m" from="CanvasLayer/Control" to="shop/categories/house/mansion_buy" method="_on_control_over_187_5m"]
 [connection signal="over_1_4m" from="CanvasLayer/Control" to="shop/categories/cars/lambo_buy" method="_on_control_over_1_4m"]
@@ -579,13 +649,16 @@ text = "X"
 [connection signal="area_entered" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control/Monetize_label" method="_on_monetize_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Monetize" to="video" method="_on_monetize_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/shop_button" to="CanvasLayer/post_video" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/shop_button" to="shop" method="_on_shop_pressed"]
 [connection signal="earnings" from="video" to="CanvasLayer/Control" method="_on_video_earnings"]
 [connection signal="random_sub_amount" from="video" to="CanvasLayer/Control" method="_on_video_random_sub_amount"]
 [connection signal="vid_posted" from="video" to="CanvasLayer/post_video" method="_on_video_vid_posted"]
+[connection signal="vid_posted" from="video" to="video/viral_badge" method="_on_video_vid_posted"]
 [connection signal="view_amount" from="video" to="CanvasLayer/Control" method="_on_video_view_amount"]
+[connection signal="viral" from="video" to="video/viral_badge" method="_on_video_viral"]
 [connection signal="rentpay" from="rent" to="CanvasLayer/post_video" method="_on_rent_rentpay"]
 [connection signal="rentpay" from="rent" to="CanvasLayer/Control" method="_on_rent_rentpay"]
 [connection signal="pressed" from="rent/rentpay" to="CanvasLayer/post_video" method="_on_rentpay_pressed"]

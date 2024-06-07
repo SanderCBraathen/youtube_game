@@ -9,8 +9,11 @@ extends Control
 @onready var monetize_status = $monetizestatus
 @onready var total_earnings = $Control/earnings/earningamount
 @onready var payduedate = $Control/daycount/dayamount
+@onready var month_earning_ui = $Control/earning_month
+@onready var month_earning_amount = $Control/earning_month/earning_month_amount
 
 #Variables
+var month_earnings =  0
 var monetized = false
 var money = 15000
 var subscribers = 0
@@ -49,14 +52,14 @@ func _ready():
 func _process(delta):
 	total_vids.text = str(vids)
 	if views >= 1000000:
-		total_views.text = str(views / 100000) + "M"
+		total_views.text = str(views / 1000000) + "M"
 	elif views >= 10000:
 		total_views.text = str(views / 1000) + "K"
 	else:
 		total_views.text = str(views)
 	
 	if subscribers >= 1000000:
-		subs_ui.text = str(subscribers / 100000) + "M"
+		subs_ui.text = str(subscribers / 1000000) + "M"
 	elif subscribers >= 10000:
 		subs_ui.text = str(subscribers / 1000) + "K"
 	else:
@@ -68,7 +71,27 @@ func _process(delta):
 		money_ui.text = str(money / 1000) + "K" + " $"
 	else:
 		money_ui.text = str(money) + " $"
-	total_earnings.text = str(earnings) + " $"
+	
+	if earnings >= 1000000:
+		total_earnings.text = str(earnings / 100000) + "M" + " $"
+	elif earnings >= 10000:
+		total_earnings.text = str(earnings / 1000) + "K" + " $"
+	else:
+		total_earnings.text = str(earnings) + " $"
+	
+	if month_earnings >= 1000000:
+		month_earning_amount.text = str(month_earnings / 100000) + "M" + " $"
+	elif month_earnings >= 10000:
+		month_earning_amount.text = str(month_earnings / 1000) + "K" + " $"
+	else:
+		month_earning_amount.text = str(month_earnings) + " $"
+	
+	if earnings >= 1000000:
+		total_earnings.text = str(earnings / 100000) + "M" + " $"
+	elif earnings >= 10000:
+		total_earnings.text = str(earnings / 1000) + "K" + " $"
+	else:
+		total_earnings.text = str(earnings) + " $"
 	payduedate.text = str(payduedate_amount)
 	
 	if money <= 0:
@@ -135,11 +158,13 @@ func _on_monetize_pressed():
 func _on_video_earnings(money_earnings):
 	money += money_earnings
 	earnings += money_earnings
+	month_earnings += money_earnings
 
 
 func _on_rent_rentpay(bill_amount):
 	money -= bill_amount
 	payduedate_amount += 30
+	month_earnings = 0
 
 
 func _on_shop_bought(bought_amount):
