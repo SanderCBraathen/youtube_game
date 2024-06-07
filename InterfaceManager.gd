@@ -40,6 +40,8 @@ signal under_1_4m
 signal under_187_5m
 signal under_250m
 
+signal rent_payed
+
 signal bankrupt
 
 # Called when the node enters the scene tree for the first time.
@@ -94,7 +96,7 @@ func _process(delta):
 		total_earnings.text = str(earnings) + " $"
 	payduedate.text = str(payduedate_amount)
 	
-	if money <= 0:
+	if money < 0:
 		emit_signal("bankrupt")
 		change_scene("res://bankrupt.tscn")
 	
@@ -102,6 +104,7 @@ func _process(delta):
 	
 	if payduedate_amount == 0:
 		emit_signal("rentdue")
+		payduedate_amount += 30
 	
 	if subscribers >= 1000:
 		emit_signal("over_1000_subs")
@@ -116,9 +119,9 @@ func _process(delta):
 		emit_signal("over_25k")
 	if money >= 1400000:
 		emit_signal("over_1_4m")
-	if money >= 187500000:
+	if money >= 18750000:
 		emit_signal("over_187_5m")
-	if money >= 250000000:
+	if money >= 25000000:
 		emit_signal("over_250m")
 	
 	if money <= 2299:
@@ -127,9 +130,9 @@ func _process(delta):
 		emit_signal("under_25k")
 	if money <= 1399999:
 		emit_signal("under_1_4m")
-	if money <= 187499999:
+	if money <= 18749999:
 		emit_signal("under_187_5m")
-	if money <= 249999999:
+	if money <= 24999999:
 		emit_signal("under_250m")
 
 
@@ -163,8 +166,10 @@ func _on_video_earnings(money_earnings):
 
 func _on_rent_rentpay(bill_amount):
 	money -= bill_amount
-	payduedate_amount += 30
+	#payduedate_amount += 30
 	month_earnings = 0
+	emit_signal("rent_payed")
+	
 
 
 func _on_shop_bought(bought_amount):

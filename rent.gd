@@ -2,6 +2,8 @@ extends Node2D
 
 signal rentpay
 
+var popup = false
+
 @onready var rent_amount_ui = $renttext/rentamount
 var bill_amount = 120
 var mansion_bought = false
@@ -32,17 +34,21 @@ func _process(delta):
 	
 	if apartment_rent == true:
 		bill_amount =+ 5000
+	
+	
+		
 
 
 func _on_rentpay_pressed():
-	self.hide()
+	popup = false
 	emit_signal("rentpay", bill_amount)
+	self.hide()
 	bill_amount = rent
 
 
 func _on_control_rentdue():
-	await get_tree().create_timer(2).timeout
-	self.show()
+	popup = true
+	_popup()
 
 
 func _on_shop_rent(rent_amount):
@@ -51,3 +57,9 @@ func _on_shop_rent(rent_amount):
 
 func _on_shop_mansion():
 	mansion_bought = true
+
+func _popup():
+	if popup == true:
+		await get_tree().create_timer(2).timeout
+		self.show()
+		popup = false

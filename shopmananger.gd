@@ -67,7 +67,7 @@ func _on_apartment_rent_pressed():
 	apartment_label_ui.text = "Rented"
 
 func _on_mansion_buy_pressed():
-	bought_amount = 187500000
+	bought_amount = 18750000
 	emit_signal("bought", bought_amount)
 	emit_signal("mansion")
 	mansion_label_ui.add_theme_color_override("font_color", Color(0,1,0))
@@ -83,7 +83,7 @@ func _on_lowlex_buy_pressed():
 	lowlex_label_ui.text = "Bought"
 
 func _on_banana_buy_pressed():
-	bought_amount = 250000000
+	bought_amount = 25000000
 	emit_signal("bought", bought_amount)
 	banana_label_ui.add_theme_color_override("font_color", Color(0,1,0))
 	banana_label_ui.text = "Bought"
