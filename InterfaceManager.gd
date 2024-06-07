@@ -41,7 +41,7 @@ signal under_187_5m
 signal under_250m
 
 signal rent_payed
-
+signal first_sub
 signal bankrupt
 
 # Called when the node enters the scene tree for the first time.
@@ -112,6 +112,9 @@ func _process(delta):
 	if subscribers >= 1000:
 		emit_signal("able_to_monetize")
 		var able_to_monetize = true
+	
+	if subscribers >= 1:
+		emit_signal("first_sub")
 	
 	if money >= 2300:
 		emit_signal("over_2300")

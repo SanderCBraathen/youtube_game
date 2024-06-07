@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bksg2iqyw3hm"]
 
 [ext_resource type="Script" path="res://intro.gd" id="1_2grss"]
-[ext_resource type="FontFile" path="res://joystix monospace.otf" id="2_5olbu"]
+[ext_resource type="FontFile" uid="uid://cs1ewh1rly1yk" path="res://joystix monospace.otf" id="2_5olbu"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

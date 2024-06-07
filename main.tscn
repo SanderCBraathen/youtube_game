@@ -1,21 +1,25 @@
-[gd_scene load_steps=22 format=3 uid="uid://bo8xg3fvjige1"]
+[gd_scene load_steps=26 format=3 uid="uid://bo8xg3fvjige1"]
 
 [ext_resource type="Script" path="res://post_video.gd" id="1_3qxjh"]
 [ext_resource type="Script" path="res://InterfaceManager.gd" id="1_st65m"]
 [ext_resource type="Script" path="res://video.gd" id="2_6jo0x"]
 [ext_resource type="Script" path="res://Monetize_button.gd" id="3_3s4ni"]
+[ext_resource type="Script" path="res://sub_t_label.gd" id="4_cd712"]
 [ext_resource type="Script" path="res://Monetize_label.gd" id="4_xsc5w"]
+[ext_resource type="Texture2D" uid="uid://bgnlq7ib1fapa" path="res://kenney_cursor-pack/Vector/Basic/arrow_s.svg" id="5_all04"]
 [ext_resource type="Texture2D" uid="uid://rvtib1df0hol" path="res://kenney_cursor-pack/Vector/Basic/look_a.svg" id="5_dihjm"]
 [ext_resource type="Script" path="res://viral_badge.gd" id="5_sybur"]
 [ext_resource type="Texture2D" uid="uid://bqdx0cfgagr6h" path="res://kenney_cursor-pack/Vector/Basic/pointer_h.svg" id="5_up7ys"]
 [ext_resource type="Script" path="res://rent.gd" id="5_x2mah"]
 [ext_resource type="Script" path="res://shopmananger.gd" id="6_5bgk2"]
 [ext_resource type="Script" path="res://Toyuto_buy.gd" id="7_e7e0o"]
+[ext_resource type="Texture2D" uid="uid://1utuev7oqgi4" path="res://icons/images-removebg-preview.png" id="7_kn0j7"]
 [ext_resource type="Script" path="res://lambo_buy.gd" id="8_11vfu"]
 [ext_resource type="Script" path="res://apartment_rent.gd" id="9_2xg4f"]
 [ext_resource type="Script" path="res://mansion_buy.gd" id="10_s333u"]
 [ext_resource type="Script" path="res://lowlex_buy.gd" id="11_jhqmr"]
 [ext_resource type="Script" path="res://banana_buy.gd" id="12_o1aye"]
+[ext_resource type="Texture2D" uid="uid://cdjh1kqdxocx6" path="res://kenney_cursor-pack/Vector/Basic/cross_large.svg" id="17_ah0fm"]
 
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(1160.5, 179)
@@ -300,6 +304,23 @@ offset_bottom = 39.0
 theme_override_font_sizes/font_size = 25
 text = "SHOP"
 
+[node name="sub_t_label" type="Label" parent="CanvasLayer/Control"]
+offset_left = 584.0
+offset_top = -233.0
+offset_right = 1054.0
+offset_bottom = -160.0
+theme_override_font_sizes/font_size = 25
+text = "You got your first subscriber! 
+Only 999 more until you get monetized"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_cd712")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/sub_t_label"]
+position = Vector2(236, 122)
+scale = Vector2(3, 3)
+texture = ExtResource("5_all04")
+
 [node name="Monetize_label" type="Label" parent="CanvasLayer/Control"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
@@ -338,6 +359,11 @@ offset_right = 548.0
 offset_bottom = 171.0
 theme_override_font_sizes/font_size = 25
 text = "Popularity: "
+
+[node name="Images-removebg-preview" type="Sprite2D" parent="video/popcount"]
+position = Vector2(-24, 20)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_kn0j7")
 
 [node name="title" type="Label" parent="video"]
 offset_left = 14.0
@@ -620,17 +646,19 @@ text = "Buy Golden Banana"
 script = ExtResource("12_o1aye")
 
 [node name="close" type="Button" parent="shop"]
+modulate = Color(1, 0, 0, 1)
 offset_left = 20.0
 offset_top = 14.0
 offset_right = 59.0
 offset_bottom = 45.0
-text = "X"
+icon = ExtResource("17_ah0fm")
 
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/post_video" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/Control" method="_on_post_video_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="video" method="_on_post_video_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="video/viral_badge" method="_on_post_video_pressed"]
 [connection signal="able_to_monetize" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize" method="_on_control_able_to_monetize"]
+[connection signal="first_sub" from="CanvasLayer/Control" to="CanvasLayer/Control/sub_t_label" method="_on_control_first_sub"]
 [connection signal="money_amount" from="CanvasLayer/Control" to="shop" method="_on_control_money_amount"]
 [connection signal="over_1000_subs" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize_label" method="_on_control_over_1000_subs"]
 [connection signal="over_1000_subs" from="CanvasLayer/Control" to="video" method="_on_control_over_1000_subs"]
