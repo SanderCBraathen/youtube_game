@@ -68,7 +68,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	total_vids.text = str(vids)
-	if views >= 100000:
+	if views >= 1000000:
 		total_views.text = str(views / 1000000) + "M"
 	elif views >= 10000:
 		total_views.text = str(views / 1000) + "K"
@@ -113,7 +113,7 @@ func _process(delta):
 	if month == 13:
 		year += 1
 		month = 1
-	payduedate.text = "Year: " + str(year) + " Month: " + str(month)
+	payduedate.text = "Month: " + str(month) + " Year: " + str(year)
 	
 	
 	if money < 0:
