@@ -1,0 +1,210 @@
+[gd_scene load_steps=10 format=3 uid="uid://ck8x0ubl62rti"]
+
+[ext_resource type="Script" path="res://Scripts/shopmananger.gd" id="1_ggoyg"]
+[ext_resource type="Script" path="res://Scripts/Toyuto_buy.gd" id="2_t3fdo"]
+[ext_resource type="Script" path="res://Scripts/apartment_rent.gd" id="3_5t6rg"]
+[ext_resource type="Script" path="res://Scripts/lambo_buy.gd" id="3_77hxw"]
+[ext_resource type="Script" path="res://Scripts/mansion_buy.gd" id="5_g6leu"]
+[ext_resource type="Script" path="res://Scripts/lowlex_buy.gd" id="6_r2bcy"]
+[ext_resource type="Script" path="res://Scripts/banana_buy.gd" id="7_78h2m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cabh8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ymr7p"]
+size = Vector3(300, 350, 1)
+
+[node name="shop" type="Node2D"]
+script = ExtResource("1_ggoyg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.368627, 1, 1, 0.388235)
+position = Vector2(575.75, 200.75)
+scale = Vector2(1152.5, 402.5)
+mesh = SubResource("BoxMesh_cabh8")
+
+[node name="categories" type="Node2D" parent="."]
+position = Vector2(70, 30)
+
+[node name="cars" type="MeshInstance2D" parent="categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(165, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="categories/cars"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "CARS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toyuto_label" type="Label" parent="categories/cars"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Toyuto Leak +1 pop
+Buy: 2.3k"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toyuto_buy" type="Button" parent="categories/cars"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Buy Toyuto Leak"
+script = ExtResource("2_t3fdo")
+
+[node name="lambo_label" type="Label" parent="categories/cars"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Damborglini Avantedor +15 pop
+Buy: 1.4M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lambo_buy" type="Button" parent="categories/cars"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Damborglini Avantedor"
+script = ExtResource("3_77hxw")
+
+[node name="house" type="MeshInstance2D" parent="categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(500, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="categories/house"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "HOUSES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="apartment_label" type="Label" parent="categories/house"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "2 Story Apartment +2 pop
+Rent: 5k A Month"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="apartment_rent" type="Button" parent="categories/house"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Rent 2 Story Apartment"
+script = ExtResource("3_5t6rg")
+
+[node name="mansion_label" type="Label" parent="categories/house"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Mansion +75 pop
+Buy: 187.5M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mansion_buy" type="Button" parent="categories/house"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Mansion"
+script = ExtResource("5_g6leu")
+
+[node name="luxury" type="MeshInstance2D" parent="categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(835, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="categories/luxury"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "LUXURY ITEMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lowlex_label" type="Label" parent="categories/luxury"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Lowlex Titanic Watch +2 pop
+Buy: 25k"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lowlex_buy" type="Button" parent="categories/luxury"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Buy Lowlex Titanic"
+script = ExtResource("6_r2bcy")
+
+[node name="banana_label" type="Label" parent="categories/luxury"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Golden Banana +100 pop
+Buy: 250M
+pikk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="banana_buy" type="Button" parent="categories/luxury"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Golden Banana"
+script = ExtResource("7_78h2m")
+
+[node name="close" type="Button" parent="."]
+offset_left = 1111.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 32.0
+text = "X"
+
+[connection signal="pressed" from="categories/cars/Toyuto_buy" to="." method="_on_toyuto_buy_pressed"]
+[connection signal="pressed" from="categories/cars/Toyuto_buy" to="categories/cars/Toyuto_buy" method="_on_pressed"]
+[connection signal="pressed" from="categories/cars/lambo_buy" to="." method="_on_lambo_buy_pressed"]
+[connection signal="pressed" from="categories/cars/lambo_buy" to="categories/cars/lambo_buy" method="_on_pressed"]
+[connection signal="pressed" from="categories/house/apartment_rent" to="." method="_on_apartment_rent_pressed"]
+[connection signal="pressed" from="categories/house/apartment_rent" to="categories/house/apartment_rent" method="_on_pressed"]
+[connection signal="pressed" from="categories/house/mansion_buy" to="." method="_on_mansion_buy_pressed"]
+[connection signal="pressed" from="categories/house/mansion_buy" to="categories/house/mansion_buy" method="_on_pressed"]
+[connection signal="pressed" from="categories/luxury/lowlex_buy" to="." method="_on_lowlex_buy_pressed"]
+[connection signal="pressed" from="categories/luxury/lowlex_buy" to="categories/luxury/lowlex_buy" method="_on_pressed"]
+[connection signal="pressed" from="categories/luxury/banana_buy" to="." method="_on_banana_buy_pressed"]
+[connection signal="pressed" from="categories/luxury/banana_buy" to="categories/luxury/banana_buy" method="_on_pressed"]
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
