@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://chopx10j6n3g6"]
+
+[ext_resource type="Script" path="res://Scripts/areyousure.gd" id="1_nlro6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i28l0"]
+size = Vector3(500, 500, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nlro6")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.566092, 1.76881e-06, 3.36915e-07, 0.0627451)
+position = Vector2(574, 309)
+mesh = SubResource("BoxMesh_i28l0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -119.5
+offset_right = 113.0
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Are you sure you want to quit?
+
+Your game session will not get saved"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="yes" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "YES"
+
+[node name="no" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "NO"
+
+[connection signal="pressed" from="VBoxContainer/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="VBoxContainer/no" to="." method="_on_no_pressed"]

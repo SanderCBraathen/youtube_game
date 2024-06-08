@@ -1,0 +1,845 @@
+[gd_scene load_steps=33 format=3 uid="uid://b0p7shlo7sh0n"]
+
+[ext_resource type="Script" path="res://Scripts/post_video.gd" id="1_5tao1"]
+[ext_resource type="Script" path="res://Scenes/g_main.gd" id="1_d173e"]
+[ext_resource type="Script" path="res://Scripts/InterfaceManager.gd" id="2_f1x21"]
+[ext_resource type="Script" path="res://Scripts/areyousure.gd" id="2_pohtm"]
+[ext_resource type="Script" path="res://Scripts/Monetize_button.gd" id="3_22w7j"]
+[ext_resource type="Script" path="res://Scripts/sub_t_label.gd" id="4_6gbhl"]
+[ext_resource type="Texture2D" uid="uid://bgnlq7ib1fapa" path="res://kenney_cursor-pack/Vector/Basic/arrow_s.svg" id="5_0skg2"]
+[ext_resource type="Script" path="res://Scripts/Monetize_label.gd" id="6_xjkwx"]
+[ext_resource type="Texture2D" uid="uid://bqdx0cfgagr6h" path="res://kenney_cursor-pack/Vector/Basic/pointer_h.svg" id="7_p6muw"]
+[ext_resource type="Script" path="res://Scripts/video.gd" id="8_pejpf"]
+[ext_resource type="Texture2D" uid="uid://cx0ijkla3a4bw" path="res://icons/Arrestation_with_gun_icon.png" id="9_ei463"]
+[ext_resource type="Script" path="res://Scenes/normal_pop_icon.gd" id="10_64jrp"]
+[ext_resource type="Script" path="res://Scenes/stats.gd" id="10_wpsdk"]
+[ext_resource type="Texture2D" uid="uid://bf3x3srqwi3ie" path="res://kenney_googly-eyes/PNG/googly-a.png" id="11_uksf8"]
+[ext_resource type="Texture2D" uid="uid://oj52w6eq5x2s" path="res://kenney_googly-eyes/PNG/googly-b.png" id="12_b30hk"]
+[ext_resource type="Script" path="res://Scripts/viral_badge.gd" id="12_p1j4e"]
+[ext_resource type="Script" path="res://Scripts/rent.gd" id="13_dem55"]
+[ext_resource type="Script" path="res://Scripts/shopmananger.gd" id="14_ruarj"]
+[ext_resource type="Script" path="res://Scripts/Toyuto_buy.gd" id="15_xgppc"]
+[ext_resource type="Script" path="res://Scripts/lambo_buy.gd" id="16_2fwwg"]
+[ext_resource type="Texture2D" uid="uid://bwt62hr8l51ka" path="res://icons/Gerald_G_Parchment_Background_or_Border_small.png" id="16_7p2lv"]
+[ext_resource type="Script" path="res://Scripts/apartment_rent.gd" id="17_tb4hb"]
+[ext_resource type="Script" path="res://Scripts/mansion_buy.gd" id="18_oconl"]
+[ext_resource type="Script" path="res://Scripts/lowlex_buy.gd" id="19_rxfbl"]
+[ext_resource type="Script" path="res://Scripts/banana_buy.gd" id="20_ye1ui"]
+[ext_resource type="Texture2D" uid="uid://cdjh1kqdxocx6" path="res://kenney_cursor-pack/Vector/Basic/cross_large.svg" id="21_44bpw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_112ql"]
+size = Vector3(500, 500, 1)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(1160.5, 179)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qmfsw"]
+size = Vector3(400, 500, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bbg78"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cabh8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ymr7p"]
+size = Vector3(300, 350, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_d173e")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+top_level = true
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -588.0
+offset_top = 327.0
+offset_right = -588.0
+offset_bottom = 327.0
+grow_horizontal = 0
+script = ExtResource("2_pohtm")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Control"]
+modulate = Color(0.566092, 1.76881e-06, 3.36915e-07, 0.0627451)
+position = Vector2(-3, 3)
+mesh = SubResource("BoxMesh_112ql")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -119.5
+offset_right = 113.0
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Are you sure you want to quit?
+
+Your game session will not get saved"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="yes" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "YES"
+
+[node name="no" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "NO"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="post_video" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -553.0
+offset_top = 92.0
+offset_right = -418.0
+offset_bottom = 135.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "Post Video"
+flat = true
+script = ExtResource("1_5tao1")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_f1x21")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = -67.0
+offset_right = 988.0
+offset_bottom = 94.0
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Control"]
+position = Vector2(-44, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Area2D"]
+position = Vector2(618.75, 12.5)
+shape = SubResource("4")
+
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 185.0
+offset_bottom = 92.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = -72.0
+offset_right = 442.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Money:"
+
+[node name="MoneyAmount" type="Label" parent="CanvasLayer/Control/Control/VBoxContainer/Money"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 1.0
+offset_right = 172.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Subs" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 2
+offset_left = 432.0
+offset_top = -76.0
+offset_right = 861.0
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 50
+text = "Family Members:"
+
+[node name="subvalue" type="Label" parent="CanvasLayer/Control/Control/Subs"]
+modulate = Color(0.845547, 0, 0.148096, 1)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 2.0
+offset_right = 503.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 50
+text = "100"
+
+[node name="daycount" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 582.0
+offset_top = 50.0
+offset_right = 723.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+
+[node name="dayamount" type="Label" parent="CanvasLayer/Control/Control/daycount"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 85.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="earning_month" type="Label" parent="CanvasLayer/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 583.0
+offset_top = 14.0
+offset_right = 660.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Earnings Last Month:"
+
+[node name="earning_month_amount" type="Label" parent="CanvasLayer/Control/Control/earning_month"]
+layout_mode = 0
+offset_left = 261.0
+offset_right = 339.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="Monetize" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -58.0
+offset_right = 90.0
+offset_bottom = -27.0
+text = "Monetize?"
+script = ExtResource("3_22w7j")
+
+[node name="channelmon" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -29.0
+offset_right = 141.0
+offset_bottom = -6.0
+text = "Your Channel Is:"
+
+[node name="monetizestatus" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -7.0
+offset_right = 135.0
+offset_bottom = 16.0
+text = "Not Monetized?"
+
+[node name="Version" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.986111
+anchor_top = 1.0
+anchor_right = 0.986111
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "v1.4.0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="shop_button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1003.0
+offset_top = -51.0
+offset_right = 1145.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 25
+text = "RICH SHOP"
+
+[node name="sub_t_label" type="Label" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_left = 584.0
+offset_top = -233.0
+offset_right = 1054.0
+offset_bottom = -160.0
+theme_override_font_sizes/font_size = 25
+text = "You got your first subscriber! 
+Only 999 more until you get monetized"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_6gbhl")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/sub_t_label"]
+position = Vector2(236, 122)
+scale = Vector2(3, 3)
+texture = ExtResource("5_0skg2")
+
+[node name="Monetize_label" type="Label" parent="CanvasLayer/Control"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -180.0
+offset_right = 410.0
+offset_bottom = -107.0
+theme_override_font_sizes/font_size = 25
+text = "Click this button to be monetized
+ and start earning money!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_xjkwx")
+
+[node name="arrow_monetize" type="Sprite2D" parent="CanvasLayer/Control/Monetize_label"]
+modulate = Color(1, 0, 0, 0.74902)
+position = Vector2(115, 98)
+rotation = -1.46303
+scale = Vector2(2.28125, 2.28125)
+texture = ExtResource("7_p6muw")
+
+[node name="stats2" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 765.0
+offset_top = -538.0
+offset_right = 805.0
+offset_bottom = -498.0
+script = ExtResource("10_wpsdk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/Control/stats2"]
+position = Vector2(180, 244)
+mesh = SubResource("BoxMesh_qmfsw")
+
+[node name="Views" type="Label" parent="CanvasLayer/Control/stats2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 115.0
+offset_right = 118.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Total Views: "
+
+[node name="viewamount" type="Label" parent="CanvasLayer/Control/stats2/Views"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 1.0
+offset_right = 230.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="earnings" type="Label" parent="CanvasLayer/Control/stats2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 75.0
+offset_right = 151.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Total Earnings: "
+
+[node name="earningamount" type="Label" parent="CanvasLayer/Control/stats2/earnings"]
+layout_mode = 0
+offset_left = 188.0
+offset_right = 266.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="vids" type="Label" parent="CanvasLayer/Control/stats2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 157.0
+offset_right = 149.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Videos Posted: "
+
+[node name="vidamount" type="Label" parent="CanvasLayer/Control/stats2/vids"]
+layout_mode = 0
+offset_left = 180.5
+offset_right = 258.5
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="stats_title" type="Label" parent="CanvasLayer/Control/stats2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 50
+text = "STATISTICS"
+
+[node name="close" type="Button" parent="CanvasLayer/Control/stats2"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 322.0
+offset_top = 12.0
+offset_right = 362.0
+offset_bottom = 52.0
+icon = ExtResource("21_44bpw")
+
+[node name="stats" type="Button" parent="CanvasLayer/Control"]
+offset_left = 19.0
+offset_top = 26.0
+offset_right = 166.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 25
+text = "STATS"
+
+[node name="video" type="Node2D" parent="."]
+position = Vector2(23, 21)
+script = ExtResource("8_pejpf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="video"]
+modulate = Color(0.10748, 0.10748, 0.10748, 0.145098)
+position = Vector2(355.75, 88.75)
+scale = Vector2(712.5, 178.5)
+mesh = SubResource("BoxMesh_bbg78")
+
+[node name="popcount" type="Label" parent="video"]
+offset_left = 360.0
+offset_top = 136.0
+offset_right = 548.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 25
+text = "Popularity: "
+
+[node name="normal_pop_icon" type="Sprite2D" parent="video/popcount"]
+position = Vector2(-24, 20)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_ei463")
+script = ExtResource("10_64jrp")
+
+[node name="title" type="Label" parent="video"]
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 180.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 20
+text = "title"
+
+[node name="views" type="Label" parent="video"]
+offset_left = 77.0
+offset_top = 77.0
+offset_right = 137.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 20
+text = "N/A"
+
+[node name="Sprite2D" type="Sprite2D" parent="video/views"]
+position = Vector2(-23, 15)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_uksf8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="video/views"]
+position = Vector2(-54, 15)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_b30hk")
+
+[node name="revenue" type="Label" parent="video"]
+offset_left = 13.0
+offset_top = 108.0
+offset_right = 102.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 20
+text = "Revenue:"
+
+[node name="revenueamount" type="Label" parent="video/revenue"]
+modulate = Color(0, 0.772549, 0, 1)
+layout_mode = 0
+offset_left = 92.0
+offset_right = 181.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "0$"
+
+[node name="vidamount" type="Label" parent="video"]
+offset_left = 11.0
+offset_top = 49.0
+offset_right = 166.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 15
+text = "Video Number: "
+
+[node name="monetize" type="Label" parent="video"]
+offset_left = 14.0
+offset_top = 133.0
+offset_right = 54.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 25
+text = "$"
+
+[node name="viral_badge" type="Label" parent="video"]
+offset_left = 604.0
+offset_top = 1.0
+offset_right = 709.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.899328, 0.803331, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "✦"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("12_p1j4e")
+
+[node name="rent" type="Node2D" parent="."]
+visible = false
+position = Vector2(332, 215)
+script = ExtResource("13_dem55")
+
+[node name="Sprite2D" type="Sprite2D" parent="rent"]
+position = Vector2(260, 121)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_7p2lv")
+
+[node name="rentpay" type="Button" parent="rent"]
+offset_left = 148.0
+offset_top = 172.0
+offset_right = 367.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Pay Bills"
+
+[node name="renttext" type="Label" parent="rent"]
+offset_left = 170.0
+offset_top = 51.0
+offset_right = 351.0
+offset_bottom = 74.0
+text = "You need to pay bills of"
+
+[node name="rentamount" type="Label" parent="rent/renttext"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 37.0
+offset_right = 132.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "120$"
+
+[node name="shop" type="Node2D" parent="."]
+visible = false
+z_index = 1
+script = ExtResource("14_ruarj")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="shop"]
+modulate = Color(0.368627, 1, 1, 0.388235)
+position = Vector2(575.75, 200.75)
+scale = Vector2(1152.5, 402.5)
+mesh = SubResource("BoxMesh_cabh8")
+
+[node name="categories" type="Node2D" parent="shop"]
+position = Vector2(70, 30)
+
+[node name="cars" type="MeshInstance2D" parent="shop/categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(165, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="shop/categories/cars"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "MOVING VEHICLES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toyuto_label" type="Label" parent="shop/categories/cars"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Pet Rock Car +1 pop
+Buy: 2.3k"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Toyuto_buy" type="Button" parent="shop/categories/cars"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Buy Pet Rock Car"
+script = ExtResource("15_xgppc")
+
+[node name="lambo_label" type="Label" parent="shop/categories/cars"]
+visible = false
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Damborglini Avantedor +15 pop
+Buy: 1.4M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lambo_buy" type="Button" parent="shop/categories/cars"]
+visible = false
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Damborglini Avantedor"
+script = ExtResource("16_2fwwg")
+
+[node name="house" type="MeshInstance2D" parent="shop/categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(500, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="shop/categories/house"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "LOCAL PLACES TO SLEEP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="apartment_label" type="Label" parent="shop/categories/house"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Local Dumpster +2 pop
+Rent: 5k A Month"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="apartment_rent" type="Button" parent="shop/categories/house"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Rent Local Dumpster"
+script = ExtResource("17_tb4hb")
+
+[node name="mansion_label" type="Label" parent="shop/categories/house"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Tree House +75 pop
+Buy: 187.5M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mansion_buy" type="Button" parent="shop/categories/house"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Tree House"
+script = ExtResource("18_oconl")
+
+[node name="luxury" type="MeshInstance2D" parent="shop/categories"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 0.807843)
+position = Vector2(835, 156)
+mesh = SubResource("BoxMesh_ymr7p")
+
+[node name="header" type="Label" parent="shop/categories/luxury"]
+modulate = Color(0.864675, 0.864675, 0.864675, 1)
+offset_left = -148.0
+offset_top = -174.0
+offset_right = 148.0
+offset_bottom = -125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "BAD ITEMS BUT EXPENSIVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lowlex_label" type="Label" parent="shop/categories/luxury"]
+offset_left = -148.0
+offset_top = -125.0
+offset_right = 148.0
+offset_bottom = -76.0
+text = "Some Random Kids Watch +2 pop
+Buy: 25k"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lowlex_buy" type="Button" parent="shop/categories/luxury"]
+offset_left = -150.0
+offset_top = -76.0
+offset_right = 150.0
+offset_bottom = -45.0
+text = "Buy Kids Watch"
+script = ExtResource("19_rxfbl")
+
+[node name="banana_label" type="Label" parent="shop/categories/luxury"]
+offset_left = -148.0
+offset_top = 93.0
+offset_right = 148.0
+offset_bottom = 142.0
+text = "Diamond Banana +100 pop
+Buy: 250M
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="banana_buy" type="Button" parent="shop/categories/luxury"]
+offset_left = -150.0
+offset_top = 142.0
+offset_right = 150.0
+offset_bottom = 173.0
+text = "Buy Diamond Banana"
+script = ExtResource("20_ye1ui")
+
+[node name="close" type="Button" parent="shop"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 59.0
+offset_bottom = 45.0
+icon = ExtResource("21_44bpw")
+
+[connection signal="goofy" from="." to="video" method="_on_node_2d_goofy"]
+[connection signal="esc" from="Control" to="CanvasLayer/post_video" method="_on_control_esc"]
+[connection signal="esc" from="Control" to="CanvasLayer/Control" method="_on_control_esc"]
+[connection signal="esc" from="Control" to="video" method="_on_control_esc"]
+[connection signal="no" from="Control" to="CanvasLayer/post_video" method="_on_control_no"]
+[connection signal="no" from="Control" to="CanvasLayer/Control" method="_on_control_no"]
+[connection signal="no" from="Control" to="video" method="_on_control_no"]
+[connection signal="pressed" from="Control/VBoxContainer/yes" to="Control" method="_on_yes_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/no" to="Control" method="_on_no_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/post_video" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/Control" method="_on_post_video_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="video" method="_on_post_video_pressed"]
+[connection signal="pressed" from="CanvasLayer/post_video" to="video/viral_badge" method="_on_post_video_pressed"]
+[connection signal="able_to_monetize" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize" method="_on_control_able_to_monetize"]
+[connection signal="first_sub" from="CanvasLayer/Control" to="CanvasLayer/Control/sub_t_label" method="_on_control_first_sub"]
+[connection signal="g_mode_enabled" from="CanvasLayer/Control" to="video/popcount/normal_pop_icon" method="_on_control_g_mode_enabled"]
+[connection signal="money_amount" from="CanvasLayer/Control" to="shop" method="_on_control_money_amount"]
+[connection signal="n_mode_enabled" from="CanvasLayer/Control" to="video/popcount/normal_pop_icon" method="_on_control_n_mode_enabled"]
+[connection signal="over_1000_subs" from="CanvasLayer/Control" to="CanvasLayer/Control/Monetize_label" method="_on_control_over_1000_subs"]
+[connection signal="over_1000_subs" from="CanvasLayer/Control" to="video" method="_on_control_over_1000_subs"]
+[connection signal="over_187_5m" from="CanvasLayer/Control" to="shop/categories/house/mansion_buy" method="_on_control_over_187_5m"]
+[connection signal="over_1_4m" from="CanvasLayer/Control" to="shop/categories/cars/lambo_buy" method="_on_control_over_1_4m"]
+[connection signal="over_2300" from="CanvasLayer/Control" to="shop/categories/cars/Toyuto_buy" method="_on_control_over_2300"]
+[connection signal="over_250m" from="CanvasLayer/Control" to="shop/categories/luxury/banana_buy" method="_on_control_over_250m"]
+[connection signal="over_25k" from="CanvasLayer/Control" to="shop/categories/luxury/lowlex_buy" method="_on_control_over_25k"]
+[connection signal="rent_payed" from="CanvasLayer/Control" to="CanvasLayer/post_video" method="_on_control_rent_payed"]
+[connection signal="rentdue" from="CanvasLayer/Control" to="CanvasLayer/post_video" method="_on_control_rentdue"]
+[connection signal="rentdue" from="CanvasLayer/Control" to="rent" method="_on_control_rentdue"]
+[connection signal="under_187_5m" from="CanvasLayer/Control" to="shop/categories/house/mansion_buy" method="_on_control_under_187_5m"]
+[connection signal="under_1_4m" from="CanvasLayer/Control" to="shop/categories/cars/lambo_buy" method="_on_control_under_1_4m"]
+[connection signal="under_2300" from="CanvasLayer/Control" to="shop/categories/cars/Toyuto_buy" method="_on_control_under_2300"]
+[connection signal="under_250m" from="CanvasLayer/Control" to="shop/categories/luxury/banana_buy" method="_on_control_under_250m"]
+[connection signal="under_25k" from="CanvasLayer/Control" to="shop/categories/luxury/lowlex_buy" method="_on_control_under_25k"]
+[connection signal="area_entered" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="CanvasLayer/Control/Area2D" to="CanvasLayer/Control" method="_on_Area2D_area_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="CanvasLayer/Control/Monetize_label" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Monetize" to="video" method="_on_monetize_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/shop_button" to="CanvasLayer/post_video" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/shop_button" to="shop" method="_on_shop_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/stats2/close" to="CanvasLayer/Control/stats2" method="_on_close_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/stats" to="CanvasLayer/Control/stats2" method="_on_stats_pressed"]
+[connection signal="earnings" from="video" to="CanvasLayer/Control" method="_on_video_earnings"]
+[connection signal="random_sub_amount" from="video" to="CanvasLayer/Control" method="_on_video_random_sub_amount"]
+[connection signal="vid_posted" from="video" to="CanvasLayer/post_video" method="_on_video_vid_posted"]
+[connection signal="vid_posted" from="video" to="video/viral_badge" method="_on_video_vid_posted"]
+[connection signal="view_amount" from="video" to="CanvasLayer/Control" method="_on_video_view_amount"]
+[connection signal="viral" from="video" to="video/viral_badge" method="_on_video_viral"]
+[connection signal="rentpay" from="rent" to="CanvasLayer/post_video" method="_on_rent_rentpay"]
+[connection signal="rentpay" from="rent" to="CanvasLayer/Control" method="_on_rent_rentpay"]
+[connection signal="pressed" from="rent/rentpay" to="CanvasLayer/post_video" method="_on_rentpay_pressed"]
+[connection signal="pressed" from="rent/rentpay" to="rent" method="_on_rentpay_pressed"]
+[connection signal="bought" from="shop" to="CanvasLayer/Control" method="_on_shop_bought"]
+[connection signal="mansion" from="shop" to="rent" method="_on_shop_mansion"]
+[connection signal="rent" from="shop" to="CanvasLayer/Control" method="_on_shop_rent"]
+[connection signal="rent" from="shop" to="rent" method="_on_shop_rent"]
+[connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="video" method="_on_toyuto_buy_pressed"]
+[connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="shop" method="_on_toyuto_buy_pressed"]
+[connection signal="pressed" from="shop/categories/cars/Toyuto_buy" to="shop/categories/cars/Toyuto_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/cars/lambo_buy" to="video" method="_on_lambo_buy_pressed"]
+[connection signal="pressed" from="shop/categories/cars/lambo_buy" to="shop" method="_on_lambo_buy_pressed"]
+[connection signal="pressed" from="shop/categories/cars/lambo_buy" to="shop/categories/cars/lambo_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/house/apartment_rent" to="video" method="_on_apartment_rent_pressed"]
+[connection signal="pressed" from="shop/categories/house/apartment_rent" to="shop" method="_on_apartment_rent_pressed"]
+[connection signal="pressed" from="shop/categories/house/apartment_rent" to="shop/categories/house/apartment_rent" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="video" method="_on_mansion_buy_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop" method="_on_mansion_buy_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop/categories/house/apartment_rent" method="_on_mansion_buy_pressed"]
+[connection signal="pressed" from="shop/categories/house/mansion_buy" to="shop/categories/house/mansion_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="video" method="_on_lowlex_buy_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop" method="_on_lowlex_buy_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop/categories/luxury/lowlex_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="video" method="_on_banana_buy_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop" method="_on_banana_buy_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop/categories/luxury/banana_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/close" to="CanvasLayer/post_video" method="_on_close_pressed"]
+[connection signal="pressed" from="shop/close" to="shop" method="_on_close_pressed"]
