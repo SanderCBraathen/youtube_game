@@ -57,8 +57,8 @@ func new_vid():
 	await get_tree().create_timer(0.5).timeout
 	_random_sub_amount()
 	
-	if amount_views >= 1000000000:
-		views.text = str(amount_views / 1000000000) + "B"
+	if amount_views >= 100000000:
+		views.text = str(amount_views / 100000000) + "B"
 	elif amount_views >= 1000000:
 		views.text = str(amount_views / 100000) + "M"
 	elif amount_views >= 10000:
@@ -93,11 +93,11 @@ func random_view_amount():
 	
 	if viralchance == 1:
 		var random_generator3 = RandomNumberGenerator.new()
-		var viral_multi = random_generator3.randi_range(15, 500)
+		var viral_multi = random_generator3.randi_range(5, 150)
 		amount_views = vid_view * viral_multi
 		emit_signal("viral")
 	else:
-		pass
+		amount_views = vid_view
 	
 	emit_signal("view_amount", amount_views)
 
