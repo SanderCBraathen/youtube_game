@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://bo8xg3fvjige1"]
+[gd_scene load_steps=33 format=3 uid="uid://bo8xg3fvjige1"]
 
 [ext_resource type="Script" path="res://Scripts/post_video.gd" id="1_5tw0y"]
 [ext_resource type="Script" path="res://Scenes/n_main.gd" id="1_p0ruq"]
 [ext_resource type="Script" path="res://Scripts/InterfaceManager.gd" id="2_abw33"]
+[ext_resource type="Script" path="res://Scripts/gamemanager.gd" id="2_it6rn"]
 [ext_resource type="Script" path="res://Scripts/areyousure.gd" id="2_uw63l"]
 [ext_resource type="Script" path="res://Scripts/Monetize_button.gd" id="3_neqfy"]
 [ext_resource type="Script" path="res://Scripts/sub_t_label.gd" id="4_rktjd"]
@@ -45,6 +46,9 @@ size = Vector3(300, 350, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_p0ruq")
+
+[node name="gamemanager" type="Node" parent="."]
+script = ExtResource("2_it6rn")
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -215,6 +219,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 
 [node name="dayamount" type="Label" parent="CanvasLayer/Control/Control/daycount"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 3.0
 offset_right = 85.0
@@ -427,6 +432,7 @@ text = "0"
 
 [node name="close" type="Button" parent="CanvasLayer/Control/stats2"]
 modulate = Color(1, 0, 0, 1)
+layout_mode = 0
 offset_left = 322.0
 offset_top = 12.0
 offset_right = 362.0
@@ -434,6 +440,7 @@ offset_bottom = 52.0
 icon = ExtResource("21_1y6yn")
 
 [node name="stats" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 25.0
 offset_right = 168.0
@@ -752,6 +759,7 @@ offset_right = 59.0
 offset_bottom = 45.0
 icon = ExtResource("21_1y6yn")
 
+[connection signal="normal" from="." to="CanvasLayer/Control" method="_on_node_2d_normal"]
 [connection signal="normal" from="." to="video" method="_on_node_2d_normal"]
 [connection signal="esc" from="Control" to="CanvasLayer/post_video" method="_on_control_esc"]
 [connection signal="esc" from="Control" to="CanvasLayer/Control" method="_on_control_esc"]

@@ -25,3 +25,6 @@ func _on_control_over_250m():
 func _on_control_under_250m():
 	if bought == false:
 		self.hide()
+
+
+

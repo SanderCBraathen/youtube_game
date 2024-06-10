@@ -434,6 +434,7 @@ text = "STATISTICS"
 
 [node name="close" type="Button" parent="CanvasLayer/Control/stats2"]
 modulate = Color(1, 0, 0, 1)
+layout_mode = 0
 offset_left = 322.0
 offset_top = 12.0
 offset_right = 362.0
@@ -441,6 +442,7 @@ offset_bottom = 52.0
 icon = ExtResource("21_44bpw")
 
 [node name="stats" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 26.0
 offset_right = 166.0
@@ -766,6 +768,7 @@ offset_right = 59.0
 offset_bottom = 45.0
 icon = ExtResource("21_44bpw")
 
+[connection signal="goofy" from="." to="CanvasLayer/Control" method="_on_node_2d_goofy"]
 [connection signal="goofy" from="." to="video" method="_on_node_2d_goofy"]
 [connection signal="esc" from="Control" to="CanvasLayer/post_video" method="_on_control_esc"]
 [connection signal="esc" from="Control" to="CanvasLayer/Control" method="_on_control_esc"]

@@ -25,8 +25,8 @@ var payduedate_amount = 0
 var year = 1
 var month = 1
 
-var n_mode = StartOptions.normal_mode
-var g_mode = StartOptions.goofy_mode
+var n_mode = false
+var g_mode = false
 
 #Signals
 signal over_1000_subs
@@ -59,11 +59,6 @@ func _ready():
 	monetize_status.text = "Not Monetized"
 	payduedate_amount = 30
 	
-	if StartOptions.normal_mode == true:
-		emit_signal("n_mode_enabled")
-	
-	if StartOptions.goofy_mode == true:
-		emit_signal("g_mode_enabled")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -212,3 +207,12 @@ func _on_control_esc():
 
 func _on_control_no():
 	self.show()
+
+
+func _on_node_2d_normal():
+	n_mode = true
+	g_mode = false
+
+func _on_node_2d_goofy():
+	g_mode = true
+	n_mode = false
