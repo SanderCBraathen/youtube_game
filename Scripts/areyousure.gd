@@ -1,5 +1,7 @@
 extends Control
 
+@onready var save_but = $VBoxContainer/save
+
 signal esc
 signal no
 
@@ -26,3 +28,8 @@ func change_scene(target: String) -> void:
 func _on_no_pressed():
 	self.hide()
 	emit_signal("no")
+
+
+func _on_save_pressed():
+	save_but.add_theme_color_override("font_color", Color(0,1,0))
+	save_but.text = "Game Saved!"

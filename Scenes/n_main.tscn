@@ -51,7 +51,6 @@ script = ExtResource("1_p0ruq")
 script = ExtResource("2_it6rn")
 
 [node name="Control" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,9 +84,14 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "Are you sure you want to quit?
 
-Your game session will not get saved"
+Remember to save!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="save" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SAVE"
 
 [node name="yes" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -100,6 +104,7 @@ theme_override_font_sizes/font_size = 50
 text = "NO"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="post_video" type="Button" parent="CanvasLayer"]
 anchors_preset = 1
@@ -767,6 +772,8 @@ icon = ExtResource("21_1y6yn")
 [connection signal="no" from="Control" to="CanvasLayer/post_video" method="_on_control_no"]
 [connection signal="no" from="Control" to="CanvasLayer/Control" method="_on_control_no"]
 [connection signal="no" from="Control" to="video" method="_on_control_no"]
+[connection signal="pressed" from="Control/VBoxContainer/save" to="gamemanager" method="_on_save_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/save" to="Control" method="_on_save_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/yes" to="Control" method="_on_yes_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/no" to="Control" method="_on_no_pressed"]
 [connection signal="pressed" from="CanvasLayer/post_video" to="CanvasLayer/post_video" method="_on_pressed"]
@@ -832,6 +839,7 @@ icon = ExtResource("21_1y6yn")
 [connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="video" method="_on_lowlex_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop" method="_on_lowlex_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/lowlex_buy" to="shop/categories/luxury/lowlex_buy" method="_on_pressed"]
+[connection signal="pressed" from="shop/categories/luxury/banana_buy" to="gamemanager" method="_on_banana_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/banana_buy" to="video" method="_on_banana_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop" method="_on_banana_buy_pressed"]
 [connection signal="pressed" from="shop/categories/luxury/banana_buy" to="shop/categories/luxury/banana_buy" method="_on_pressed"]
